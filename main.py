@@ -14,4 +14,6 @@ while True:
 		sleep(1)
 		start()
 		sleep(1)
-	elif keyboard.is_pressed(exit): exit()
+
+	elif keyboard.is_pressed(exit):
+		exit()
