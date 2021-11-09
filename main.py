@@ -3,17 +3,21 @@ import keyboard
 from time import sleep
 from config import *
 
-def start():
-	while True:
-		pyautogui.click(button=key, clicks=clicks)
-		if keyboard.is_pressed(desactivate):
-			return
+
+active = False
+def change(x):
+	global active
+	active = False
+
+keyboard.on_release_key(activate, change)
 
 while True:
 	if keyboard.is_pressed(activate):
-		sleep(1)
-		start()
+		active = True
 		sleep(1)
 
-	elif keyboard.is_pressed(exit):
+	while active:
+		pyautogui.click(button=key, clicks=clicks)
+
+	if keyboard.is_pressed(exit_key):
 		exit()
